@@ -1,0 +1,319 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corelation Metrics</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'metrics_app/images/logos/favicon.png' %}"/>
+  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'metrics_app/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'metrics_app/css/style1.css' %}"/>
+  <link rel="stylesheet" href="{% static 'metrics_app/bootstrap-icons-1.11.1/bootstrap-icons.css' %}" />
+  <link href="{% static 'metrics_app/table/bootstrap-table.min.css' %}" rel="stylesheet">
+  <link href="{% static 'metrics_app/table/bootstrap-table.css' %}" rel="stylesheet">
+
+<body>
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a href="#" class="text-nowrap logo-img">
+          <img src="{% static 'metrics_app/images/logo1.png' %}" height="40" width="50" alt=""/>
+        </a>
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+          <i class="ti ti-x fs-8"></i>
+        </div>
+      </div>
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+            <ul id="sidebarnav">
+               <li class="nav-small-cap">
+                  <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                  <span class="hide-menu">Home</span>
+               </li>
+               <li class="sidebar-item">
+                  <a class="sidebar-link" href="#" aria-expanded="false">
+                        <span>
+                        <i class="fa-solid fa-dashboard"></i>
+                        </span>
+                     <span class="hide-menu">Monthly Summary</span>
+                  </a>
+               </li>
+               <li class="sidebar-item">
+                  <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                        <span>
+                        <i class="fa-solid fa-dashboard"></i>
+                        </span>
+                     <span class="hide-menu">Summary(Mon-Fri)</span>
+                  </a>
+               </li>
+               <li class="sidebar-item">
+                  <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                        <span>
+                       <i class="fa-solid fa-dashboard"></i>
+                        </span>
+                     <span class="hide-menu">Summary 8AM-5PM</span>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <!--  Header Start -->
+    <header class="app-header">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <ul class="navbar-nav">
+          <li class="nav-item d-block d-xl-none">
+            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+              <i class="fa-solid fa-bars"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+          <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="javascript:void(0)" id="drop2"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false" style="color: #ffffff!important;">
+                <i class="fa-solid fa-user"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!--  Header End -->
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Corelation Metrics</h5>
+          <table class="table table-striped" id="example"
+                 data-toggle="table"
+                 data-pagination="true"
+                 data-search="true"
+                 data-search-align="true"
+                 data-show-export="true"
+                 data-export-data-type="all"
+                 data-response-handler="responseHandler"
+                 data-show-fullscreen="true"
+                 data-pagination-pre-text="Previous"
+                 data-pagination-next-text="Next"
+                 data-page-list="[ 10, 20, 30, 40, 50, All]"
+                 data-buttons-class="primary">
+            <thead>
+            <tr>
+              <th data-sortable="true"><strong>AIT/APPNAME</strong></th>
+              <th data-sortable="true"><strong>Total Count of unique servers in AIT with prod
+                workloads.</strong></th>
+              <th data-sortable="true"><strong>Number of unique servers in correl
+                scope(wNAs)</strong>
+              </th>
+              <th data-sortable="true"><strong>Number of unique servers in correl scope(w
+                correl<0.7)</strong></th>
+              <th data-sortable="true"><strong>Number of unique servers in correl scope>=0.7)</strong>
+              </th>
+              <th data-sortable="true"><strong>Total number of unique BVI in correl scope</strong>
+              </th>
+              <th data-sortable="true"><strong>Total number of unique BVI with correl
+                >=0.7</strong>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT1234_Application_name1</a>
+              </td>
+              <td>2</td>
+              <td>330</td>
+              <td>10</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="{% url 'correlation_table' %}">AIT4567_Application_name2</a>
+              </td>
+              <td>8</td>
+              <td>330</td>
+              <td>14</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <hr>
+          <table>
+            <thead>
+            <tr>
+              <th colspan="3"><strong>Notes</strong></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>Red indicates Correlation Coefficient (R)>=0.7</td>
+            </tr>
+            <tr>
+              <td>SENSITIVITY = 1; If R >=0.7</td>
+            </tr>
+            <tr>
+              <td>Peak 5 minutes per hour data used(09:30 - 16:00 ET)</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'metrics_app/js/jquery-3.7.1.js' %}"></script>
+<script src="{% static 'metrics_app/js/popper.min.js' %}"></script>
+<script src="{% static 'metrics_app/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'metrics_app/table/bootstrap-table.min.js' %}"></script>
+<script src="{% static 'metrics_app/table/bootstrap-table.js' %}"></script>
+<script src="{% static 'metrics_app/table/tableExport.min.js' %}"></script>
+<script src="{% static 'metrics_app/table/bootstrap-table-export.min.js' %}"></script>
+<script>
+  $('#example').bootstrapTable({
+  exportOptions: {
+      fileName: 'Corelation Metrics'
+  }
+});
+</script>
+</body>
+</head>
+</html>
