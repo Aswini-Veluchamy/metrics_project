@@ -4,10 +4,7 @@ from django.shortcuts import render
 def create_metrics(request):
     if request.method == "POST":
         servername = request.POST['servername']
-        workload_id = request.POST['workload_id']
-        metric_type = request.POST['metric_type']
-        date_range = request.POST['date_range']
-        print(date_range)
+        print(servername)
         return render(request, 'metrics_app/create_metrics.html')
     else:
         return render(request, 'metrics_app/create_metrics.html')
