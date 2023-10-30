@@ -14,7 +14,15 @@
   <link rel="stylesheet" href="{% static 'metrics_app/bootstrap-icons-1.11.1/bootstrap-icons.css' %}" />
   <link href="{% static 'metrics_app/table/bootstrap-table.min.css' %}" rel="stylesheet">
   <link href="{% static 'metrics_app/table/bootstrap-table.css' %}" rel="stylesheet">
-
+  <style>
+        td {
+            white-space: normal !important;
+            word-wrap: break-word;
+        }
+        table {
+            table-layout: fixed;
+        }
+  </style>
 <body>
 <!--  Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -111,7 +119,7 @@
                  data-pagination-pre-text="Previous"
                  data-pagination-next-text="Next"
                  data-height="510"
-                 data-page-size="100"
+                 data-page-size="50"
                  data-page-list="[ 10, 20, 30, 40, 50, All]"
                  data-buttons-class="primary">
             <thead>
